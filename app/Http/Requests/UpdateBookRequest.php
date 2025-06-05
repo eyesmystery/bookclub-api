@@ -26,7 +26,7 @@ class UpdateBookRequest extends FormRequest
             'author' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',
             'cover_image' => 'nullable|string|max:500',
-            'division_id' => 'sometimes|required|exists:divisions,id',
+            'pdf_file' => 'nullable|string|max:500',
             'recommended_by_user_id' => 'nullable|exists:users,id',
         ];
     }

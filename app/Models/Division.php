@@ -11,6 +11,7 @@ class Division extends Model
 
     protected $fillable = [
         'name',
+        'description',
     ];
 
     /**
@@ -19,14 +20,6 @@ class Division extends Model
     public function users()
     {
         return $this->hasMany(User::class);
-    }
-
-    /**
-     * Get the books in this division.
-     */
-    public function books()
-    {
-        return $this->hasMany(Book::class);
     }
 
     /**

@@ -15,9 +15,10 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $divisions = Division::withCount(['users', 'books', 'events', 'articles', 'news'])->get();
+        $divisions = Division::withCount(['users', 'events', 'articles', 'news'])->get();
         
         return response()->json([
+            'success' => true,
             'divisions' => $divisions,
         ]);
     }
@@ -30,6 +31,7 @@ class DivisionController extends Controller
         $division = Division::create($request->validated());
 
         return response()->json([
+            'success' => true,
             'message' => 'Division created successfully',
             'division' => $division,
         ], 201);
@@ -40,9 +42,10 @@ class DivisionController extends Controller
      */
     public function show(Division $division)
     {
-        $division->load(['users', 'books', 'events', 'articles', 'news']);
+        $division->load(['users', 'events', 'articles', 'news']);
         
         return response()->json([
+            'success' => true,
             'division' => $division,
         ]);
     }
@@ -55,6 +58,7 @@ class DivisionController extends Controller
         $division->update($request->validated());
 
         return response()->json([
+            'success' => true,
             'message' => 'Division updated successfully',
             'division' => $division,
         ]);
@@ -68,6 +72,7 @@ class DivisionController extends Controller
         $division->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'Division deleted successfully',
         ]);
     }

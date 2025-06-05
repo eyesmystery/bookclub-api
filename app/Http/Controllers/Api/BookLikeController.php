@@ -39,6 +39,7 @@ class BookLikeController extends Controller
         $likesCount = $book->likes()->count();
 
         return response()->json([
+            'success' => true,
             'message' => $message,
             'liked' => $liked,
             'likes_count' => $likesCount,

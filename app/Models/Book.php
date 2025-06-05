@@ -4,27 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'title',
         'author',
         'description',
         'cover_image',
-        'division_id',
+        'pdf_file',
         'recommended_by_user_id',
     ];
-
-    /**
-     * Get the division that owns the book.
-     */
-    public function division()
-    {
-        return $this->belongsTo(Division::class);
-    }
 
     /**
      * Get the user who recommended this book.
@@ -56,5 +49,13 @@ class Book extends Model
     public function isLikedByUser($userId)
     {
         return $this->likes()->where('user_id', $userId)->exists();
+    }
+
+    /**
+     * Check if the current user has reviewed this book.
+     */
+    public function isReviewedByUser($userId)
+    {
+        return $this->reviews()->where('user_id', $userId)->exists();
     }
 }

@@ -52,9 +52,12 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::delete('users/{user}', [UserController::class, 'destroy']);
 });
 
-// Book routes
+// Club Library routes
 Route::middleware('auth:sanctum')->group(function () {
+    // Main club library endpoints
     Route::get('books', [BookController::class, 'index']);
+    Route::get('books/popular', [BookController::class, 'popular']);
+    Route::get('books/recent', [BookController::class, 'recent']);
     
     // Book reviews routes - specific routes before parameterized ones
     Route::get('books/reviewed', [BookReviewController::class, 'reviewedBooks']);

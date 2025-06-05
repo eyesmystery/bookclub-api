@@ -22,7 +22,8 @@ class StoreBookReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => 'required|string|min:10|max:2000',
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|min:10|max:2000',
         ];
     }
 
@@ -32,9 +33,13 @@ class StoreBookReviewRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'content.required' => 'Review content is required.',
-            'content.min' => 'Review must be at least 10 characters long.',
-            'content.max' => 'Review cannot exceed 2000 characters.',
+            'rating.required' => 'Rating is required.',
+            'rating.integer' => 'Rating must be a number.',
+            'rating.min' => 'Rating must be at least 1.',
+            'rating.max' => 'Rating cannot exceed 5.',
+            'comment.required' => 'Review comment is required.',
+            'comment.min' => 'Review must be at least 10 characters long.',
+            'comment.max' => 'Review cannot exceed 2000 characters.',
         ];
     }
 }

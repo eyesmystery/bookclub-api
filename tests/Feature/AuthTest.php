@@ -51,7 +51,7 @@ class AuthTest extends TestCase
             'email' => 'john@example.com',
             'name' => 'John Doe',
             'division_id' => 1,
-            'role' => 'member'
+            'role' => 'user'
         ]);
     }
 
